@@ -1,0 +1,57 @@
+<!-- 문제 1 -->
+<h3>=====출력 결과=====</h3>
+단일 for문 이용 출력 <br>
+{% for out in rank %}
+    {{out}} <br>
+{% endfor %}
+<hr>
+
+
+
+<!-- 문제 2 -->
+<!-- 그냥 했을 때 -->
+
+<table border="1">
+    <tr>
+        <th>{{rank.0.0}}</th> <th>{{rank.0.1}}</th> <th>{{rank.0.2}}</th> <th>{{rank.0.3}}</th> <th>{{rank.0.4}}</th>
+    </tr>
+
+    <tr>
+        <th>{{rank.1.0}}</th> <th>{{rank.1.1}}</th> <th>{{rank.1.2}}</th> <th>{{rank.1.3}}</th> <th>{{rank.1.4}}</th>
+    </tr>
+
+    <tr>
+        <th>{{rank.2.0}}</th> <th>{{rank.2.1}}</th> <th>{{rank.2.2}}</th> <th>{{rank.2.3}}</th> <th>{{rank.2.4}}</th>
+    </tr>
+</table>
+<hr>
+
+
+<!-- 반복문 사용했을 때-->
+<table border="1">
+{% for i in rank %}
+<tr>
+    {% for v in i %}
+    <td>
+        {{v}}
+    </td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+<hr>
+
+
+
+<!-- for loop count : for문 실행 횟수 -->
+{% for i in rank %}
+    횟수 : {{forloop.counter}} <br>
+    {{i}} <br>
+{% endfor %}
+<hr>
+
+
+
+<a ref="{{네이버}}">네이버로 이동 >> </a> {{네이버}} <br>
+<a ref="{{구글}}">구글로 이동 >> </a> {{구글}} <br>
+<a ref="{{다음}}">다음으로 이동 >> </a> {{다음}}

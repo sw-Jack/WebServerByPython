@@ -1,0 +1,45 @@
+
+    <h3>{{key}}</h3>
+    정수형 자료 : num -> {{num}}<br>
+    실수형 자료 : float -> {{float}}<br>
+    문자향 자료 : str -> {{str}}<br>
+    리스트 자료 : list -> {{list}}<br>
+    딕셔너리 자료 : dictionary -> {{dictionary}}<br>
+
+    <h3>리스트 index별 출력</h3>
+    리스트 0 : list_1.0 -> {{list.0}} <br>
+    리스트 1 : list_1.1 -> {{list.1}} <br>
+    리스트 2 : list_1.2 -> {{list.2}} <br>
+
+    <h3>딕셔너리 index별 출력</h3>
+    딕셔너리 key : dictionary.a -> {{dictionary.a}} <br>
+     딕셔너리 key : dictionary.b -> {{dictionary.b}} <br>
+   
+    <!-- for문 사용 -->
+    <hr>
+    <h3>반복문 이용 리스트 출력</h3>
+    {% for value in list %}
+    {{value}} <br>
+    {% endfor %}
+
+    <hr>
+    <h3>반복문 이용 리스트 출력</h3>
+    {% for k,v in dictionary.items %}
+    {{k}} : {{v}} <br>
+    {% endfor %}
+
+
+
+    <!-- if문 -->
+    <hr>
+    {% if num > 10 %}
+        10보다 크다
+    {% elif num == 10 %}
+        10과 같다
+    {% else %}
+        10보다 작다
+    {% endif %}
+
+
+
+

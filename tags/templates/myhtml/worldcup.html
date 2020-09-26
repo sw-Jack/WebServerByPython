@@ -1,0 +1,19 @@
+
+
+<table border="2">
+    {% for i in wcInfo %}
+    <tr>
+        {% for v in i %} 
+            {% if v == i.0 %}
+            <th>{{v}}</th> 
+            {% else %}
+                {% if i}
+            <td>{{v}}</th>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+
+
