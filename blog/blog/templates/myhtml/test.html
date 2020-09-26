@@ -1,13 +1,140 @@
-
-
-
-
 <html>
 <head>
-    <title> 타이틀</title>
+    <title> 내가 만든 웹 페이지 </title>
 </head>
 <body>   
+    <!-- GET 방식 : 입력한 값을 받아 url에 띄워 자동으로 서버에 전달해주는 방식-->
+    <!-- POST 방식 : GET 방식에 보안이 추가된 방식으로, url에 입력값이 뜨지 않음-->
+    <!-- name 이라는 속성은 입력한 값을 서버로 전달해주는 변수 역할-->
+    <form>
+        <!-- 아이디 창에 입력한 값이 id라는 변수에 저장되고 -->
+        <input type="text" name="id" placeholder="아이디"> <br>
+        <!-- 비밀번호 창에 입력한 값이 pwd라는 변수에 저장되어 넘어간다. -->
+        <input type="text" name="pwd" placeholder="비밀번호"> <br>
+        <input type="submit" value="로그인"> &nbsp;
+        <input type="button" value="버튼"> <br>
+    </form>     
 
+
+
+    <hr>
+    <!-- submit은 form 태그 안에서 동작, 입력하고 submit을 눌렀을 때 값이 반영되어 사라짐 -->
+    <form>
+        <input type="text" placeholder="아이디"> <br>
+        <input type="text" placeholder="비밀번호"> <br>
+        <input type="submit" value="로그인"> &nbsp;
+        <input type="button" value="버튼"> <br>
+    </form>     
+
+    <hr>
+    <input type="text" placeholder="아이디"> <br>
+    <input type="text" placeholder="비밀번호"> <br>
+    <input type="submit" value="로그인"> &nbsp;
+    <input type="button" value="버튼"> <br>
+
+
+
+
+    <hr>
+    <!-- checkbox는 원래 다중값 선택이 가능, 값 변경도 가능-->
+    게임 <input type="checkbox">
+    컴퓨터 <input type="checkbox">
+    멍타기 <input type="checkbox">
+    그냥 놀기 <input type="checkbox">
+
+
+    <hr>
+    <!-- 라디오버튼의 name 속성 값이 동일해야 다중 값 중 하나의 값만 선택이 가능하다 -->
+    <!-- name 속성이 없으면 다중값 선택이 됨, 값을 변경할 수도 없음-->
+    <!-- 라디오-->
+    10대 <input type="radio"> 
+    20대 <input type="radio">
+    30대 <input type="radio">
+    40대 <input type="radio">
+
+    <hr>
+    10대 <input type="radio" name="age"> 
+    20대 <input type="radio" name="age">
+    30대 <input type="radio" name="age">
+    40대 <input type="radio" name="age">
+
+    <hr>
+    10대 <input type="radio" name="age"> 
+    20대 <input type="radio" name="age">
+    30대 <input type="radio" name="age" checked> <!-- 미리 값을 지정해놓을 수 있는 checked 속성 -->
+    40대 <input type="radio" name="age">
+
+
+
+
+
+
+
+
+
+    <hr>
+    <!-- input 태그-->
+    <!-- type 속성 : 종류 -->
+    <!-- value 속성 : 들어갈 값 설정 -->
+    <input type="button" value="버튼"> <br>
+    <input type="submit" value="서브밋"> <br>
+    <input type="text" value="아이디 입력"> <br>
+    <input type="password" value="비밀번호 입력"> <br>
+    <!-- placeholder 속성 : 반투명 글씨로 나타내기 -->
+    <input type="text" placeholder="아이디 입력"> <br>
+    <input type="password" placeholder="비밀번호 입력"> <br>
+    <input type="radio"> <br>
+    <input type="checkbox"> <br>
+    <input type="date"> <br>
+
+
+
+
+
+
+
+
+
+    <hr>
+    <table border="1" align="center">
+        <caption><b>IT 시간표</b></caption>
+        
+        <tr>
+            <th colspan="5">2020년 09월 IT 시간표</th>
+        </tr>
+
+        <tr>
+            <th></th> <th>401호</th> <th>402호</th> <th>403호</th> <th>404호</th>
+        </tr>
+
+        <tr>
+            <th>09:00-12:00</th> <th rowspan="4">공사중</th> <td>python 기초</td> <td rowspan="2">
+            네트워크보안<br>실무자 양성</td> <td>보충훈련 과정<br>(OS/네트워크)</td>
+        </tr>
+
+        <tr>
+            <th>12:30-15:30</th>  <td>java</td> <td>보충훈련 과정<br>(언어계열)</td>
+        </tr>
+
+        <tr>
+            <th>15:30-18:30</th>  <td>C언어</td> <td rowspan="2">
+            가상화 시스템 엔지니어<br>실무자 양성</td> <td>리눅스</td>
+        </tr>
+
+        <tr>
+            <th>19:00-22:00</th>  <td>python web</td> <td rowspan="2">
+            서버</td> 
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+<hr>
 <table border="1"> 
     <tr>
         <th>1</th> <th>2</th> <th>3</th>
@@ -32,9 +159,6 @@
         <td>1</td> <td>3</td>
     </tr>
 </table>
-
-
-
 
 
 
@@ -89,9 +213,9 @@
    <!-- &copy; &lt;body&gt; <br>
    연<br>습<br>  중<br>
    -->
-
+   &copy; &lt;body&gt; <br>
+   연<br>습<br>  중<br>
+   
    하나씩 <p>만들어</p> 보자
 </body>
 </html>
-
-
