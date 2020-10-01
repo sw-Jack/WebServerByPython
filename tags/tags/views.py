@@ -1,5 +1,3 @@
-
-
 from django.shortcuts import render, HttpResponse
 
 def main(request) :
@@ -27,9 +25,9 @@ def tempcode(request) :
 def worldcup(request) :
     context = {
         "wcInfo" : [ ["순위","국가","승점","승","무","패","득점","실점","골득실"],
-                    [1,"이란",17,5,2,0,6,0,6],
-                    [2,"대한민국",13,4,1,2,9,7,2],
-                    [3,"시리아",8,2,2,3,2,3,-1] ]
+                    [1,{"이란":"https://www.naver.com"},17,5,2,0,6,0,6],
+                    [2,{"대한민국":"https://www.google.com"},13,4,1,2,9,7,2],
+                    [3,{"시리아":"https://www.daum.net"},8,2,2,3,2,3,-1] ]
     }
     return render(request, "myhtml/worldcup.html", context)
 

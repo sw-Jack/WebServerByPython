@@ -1,19 +1,26 @@
 
-
-<table border="2">
-    {% for i in wcInfo %}
+<table border="1">
+{% for val in wcInfo %}
     <tr>
-        {% for v in i %} 
-            {% if v == i.0 %}
-            <th>{{v}}</th> 
-            {% else %}
-                {% if i}
-            <td>{{v}}</th>
-            {% endif %}
-        {% endfor %}
+        {% if forloop.counter == 1 %}
+            {% for v in val %}
+                <th> {{ v }} </th>
+            {% endfor %}
+        {% else %}
+            {% for v in val %}
+                {% if forloop.counter == 1 %}
+                    <th> {{ v }} </th>
+                {% elif forloop.counter == 2 %}
+                    {% for k,m in v.items %}
+                        <td> 
+                            <a href="{{ m }}"> {{ k }}</a> 
+                        </td>
+                    {% endfor %}
+                {% else %}
+                    <td> {{ v }} </td>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     </tr>
-    {% endfor %}
+{% endfor %}
 </table>
-
-
-
