@@ -1,0 +1,23 @@
+
+<!-- 왜 안될까???
+<table border="1">
+    <h2> phonebook detail 페이지 </h2> 
+    {% for i in phonebook %}
+        {% for k,v in i.items %}
+        <li>
+            {{k}} : {{v}}
+        </li>
+        {% endfor %}
+    {% endfor %}
+</table>
+-->
+
+<h2> phonebook detail 페이지 </h2> 
+
+<ul>
+    <li> 이름 : {{phonebook.이름}} </li>
+    <li> 전화번호 : {{phonebook.전화번호}} </li>
+    <li> 주소 : {{phonebook.주소}} </li>
+    <li> 이메일 : {{phonebook.이메일}} </li>
+    <li> 생년월일 : {{phonebook.생년월일}} </li>
+</ul>
