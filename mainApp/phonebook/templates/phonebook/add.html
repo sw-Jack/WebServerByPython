@@ -1,1 +1,13 @@
-phonebook add 페이지입니다.
+
+
+add
+ <hr>
+ 
+<form method="POST"> {% csrf_token %}
+    <input type="text" placeholder="이름" name="name"> <br>
+    <input type="text" placeholder="전화번호" name="phNum"> <br>
+    <input type="email" placeholder="이메일" name="email"> <br>
+    <input type="text" placeholder="주소" name="addr"> <br>
+    <input type="date" placeholder="생년월일" name="bir"> <br>
+    <input type="submit" value="등록">
+</form>

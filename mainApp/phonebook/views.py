@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from phonebook.models import PhoneBook
 # Create your views here.
 
@@ -17,10 +17,24 @@ def index(request) :
     return render(request, "phonebook/index.html", context)
 
 def add(request) :
-    return render(request, "phonebook/add.html")
+    if request.method == 'POST':    # 데이터가 존재하고 데이터 처리가 일어난 경우
+        table = PhoneBook()
+        table.이름 = request.POST.get("name")
+        table.전화번호 = request.POST.get("phNum")
+        table.이메일 = request.POST.get("email")
+        table.주소 = request.POST.get("addr")
+        table.생년월일 = request.POST.get("bir")
+        table.save()
+        # return render(request, "phonebook/index.html") # 새로 저장한 값도 넘겨줘야함
+        return redirect("PB:index") # redirect 사용을 위해 django.shortcuts 에서 redirect import
+    else :  # GET 방식이면 아래 주소로 넘기기, 데이터 없이 페이지만 요청한 경우
+        return render(request, "phonebook/add.html")
 
-def delete(request) :
-    return render(request, "phonebook/delete.html")
+def delete(request, userId) :
+    dele = PhoneBook.objects.get(id=userId)
+    dele.delete()
+    return redirect("PB:index")
+    # return render(request, "phonebook/delete.html")
 
 def detail(request, userId) :
     # 사용자 정보를 가져오는데, .get(id=userId), 
@@ -31,7 +45,19 @@ def detail(request, userId) :
     context = {"phonebook" : alluser}
     return render(request, "phonebook/detail.html", context)
 
-def update(request) :
-    return render(request, "phonebook/update.html")
+def update(request, userId) :
+    table = PhoneBook.objects.get(id=userId)
+    context = {"phonebook" : table}
+
+    if request.method == 'POST' :
+        table.이름 = request.POST.get('name')
+        table.전화번호 = request.POST.get('phNum')
+        table.이메일 = request.POST.get('email')
+        table.주소 = request.POST.get('addr')
+        table.생년월일 = request.POST.get('bir')
+        table.save()
+        return redirect("PB:detail", userId)
+    else :
+        return render(request, "phonebook/update.html", context)
 
 

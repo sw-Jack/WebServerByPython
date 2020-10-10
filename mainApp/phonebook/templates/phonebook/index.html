@@ -1,6 +1,4 @@
-
-
-<h2> phonebook index 페이지 </h2> 
+index
 <hr>
 <!--
 <ul>
@@ -21,20 +19,19 @@
 </ul>
 -->
 
-<!-- 연습문제 -->
 
-<table border="1">
-    <td>
-        {%for i in phonebook %}
-        <li>
-            {{i.id}} :  
-            <!-- 상대경로 :  <a href="http://phonebook/detail/{{i.id}}">{{i.이름}}</a> -->
-            <a href="http://127.0.0.1:8000/phonebook/detail/{{i.id}}">{{i.이름}}</a> 
-            : {{i.전화번호}}
-        </li>
-        {% endfor %}
-    </td>
-</table>
+{%for i in phonebook %}
+<li>
+    {{i.id}} :  
+    <a href="{% url 'PB:detail' i.id %}">{{i.이름}}</a> 
+    <!-- 상대경로 : <a href="http://phonebook/detail/{{i.id}}">{{i.이름}}</a> -->
+    <!-- 절대경로 : <a href="http://127.0.0.1:8000/phonebook/detail/{{i.id}}">{{i.이름}}</a> -->
+    : {{i.전화번호}}
+</li>
+{% endfor %}
+
+<button type="button" onclick="location.href='{% url 'PB:add' %}'">추가</button>
+
 
 
 

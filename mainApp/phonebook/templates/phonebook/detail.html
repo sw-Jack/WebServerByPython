@@ -1,18 +1,7 @@
 
-<!-- 왜 안될까???
-<table border="1">
-    <h2> phonebook detail 페이지 </h2> 
-    {% for i in phonebook %}
-        {% for k,v in i.items %}
-        <li>
-            {{k}} : {{v}}
-        </li>
-        {% endfor %}
-    {% endfor %}
-</table>
--->
+detail
+<hr>
 
-<h2> phonebook detail 페이지 </h2> 
 
 <ul>
     <li> 이름 : {{phonebook.이름}} </li>
@@ -21,3 +10,10 @@
     <li> 이메일 : {{phonebook.이메일}} </li>
     <li> 생년월일 : {{phonebook.생년월일}} </li>
 </ul>
+
+<button type="button" onclick="location.href='{% url 'PB:index' %}'">메인</button>
+<button type="button" onclick="location.href='{% url 'PB:update' phonebook.id %}'">수정</button>
+<button type="button" onclick="location.href='{% url 'PB:delete' phonebook.id %}'">삭제</button>
+
+
+
