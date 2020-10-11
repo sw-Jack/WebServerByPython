@@ -1,0 +1,25 @@
+
+detail
+<hr>
+<ul>
+    <li> 이름 : {{phonebook.이름}} </li>
+    <li> 전화번호 : {{phonebook.전화번호}} </li>
+    <li> 주소 : {{phonebook.주소}} </li>
+    <li> 이메일 : {{phonebook.이메일}} </li>
+    <li> 생년월일 : {{phonebook.생년월일}} </li>
+    <li> 작성자 : {{phonebook.작성자}}</li>
+</ul>
+
+<button type="button" onclick="location.href='{% url 'PB:index' %}'">메인</button>
+<!--{% if user.is_active %}
+    {% if user.username == phonebook.작성자 %}
+        <button type="button" onclick="location.href='{% url 'PB:update' phonebook.id %}'">수정</button>
+        <button type="button" onclick="location.href='{% url 'PB:delete' phonebook.id %}'">삭제</button>
+    {% endif %}
+{% endif %} -->
+{% if user.username == phonebook.작성자 %}
+    <button type="button" onclick="location.href='{% url 'PB:update' phonebook.id %}'">수정</button>
+    <button type="button" onclick="location.href='{% url 'PB:delete' phonebook.id %}'">삭제</button>
+{% endif %}
+
+

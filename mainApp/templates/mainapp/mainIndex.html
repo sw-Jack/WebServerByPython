@@ -1,0 +1,24 @@
+
+
+{% if user.is_active %}
+    {{user.username}}님 환영합니다!!!
+<button type="button" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+<!-- <br> <a href="{% url 'logout' %}">logout</a> -->
+<button type="button" onclick="location.href='{% url 'PB:index' %}'">목록보기</button>
+{% else %}
+    <a href="{% url 'login' %}">로그인</a>
+    <a href="{% url 'createAccount' %}">회원가입</a>
+{% endif %}
+<hr>
+
+로그인한 사용자 : {{user.username}} <br>
+로그인한 사용자 id : {{user.id}} <br>
+로그인 확인 : {{user.is_active}} <br>
+관리자인지 : {{user.is_superuser}} <br>
+마지막 로그인 날짜 : {{user.last_login}} <br>
+이름 : {{user.first_name}} <br>
+성 : {{user.last_name}} <br>
+이메일 : {{user.email}} <br>
+
+
+

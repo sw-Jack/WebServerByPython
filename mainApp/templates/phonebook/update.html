@@ -1,5 +1,9 @@
+
+
+
 update
 <hr>
+{%if user.is_active %}
 <form method="POST"> {% csrf_token %}
     <input type="text" value="{{phonebook.이름}}" name="name"> <br>
     <input type="text" value="{{phonebook.전화번호}}" name="phNum"> <br>
@@ -9,3 +13,9 @@ update
     <input type="date" value="{{phonebook.생년월일 | date:'Y-m-d' }}" name="bir"> <br>
     <input type="submit" value="수정">
 </form>
+{% else %}
+    <script>
+        alert("로그인 먼저 진행하세요")
+        location.href="{% url 'login' %}"
+    </script>
+{% endif %}

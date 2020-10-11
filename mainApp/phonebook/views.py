@@ -1,6 +1,7 @@
 
 from django.shortcuts import render, redirect
 from phonebook.models import PhoneBook
+
 # Create your views here.
 
 def test(request) :
@@ -17,6 +18,9 @@ def index(request) :
     return render(request, "phonebook/index.html", context)
 
 def add(request) :
+    # 로그인 되어 있지 않은 경우 URL 통해 접근할 시 로그인 페이지로 강제 이동
+    if request.user.is_active != True :
+        return redirect("login")
     if request.method == 'POST':    # 데이터가 존재하고 데이터 처리가 일어난 경우
         table = PhoneBook()
         table.이름 = request.POST.get("name")
@@ -24,6 +28,8 @@ def add(request) :
         table.이메일 = request.POST.get("email")
         table.주소 = request.POST.get("addr")
         table.생년월일 = request.POST.get("bir")
+        # 유저에게 입력받지 않고 DB상으로만 현재 유저 아이디 저장
+        table.작성자 = request.user.username
         table.save()
         # return render(request, "phonebook/index.html") # 새로 저장한 값도 넘겨줘야함
         return redirect("PB:index") # redirect 사용을 위해 django.shortcuts 에서 redirect import
@@ -40,7 +46,7 @@ def detail(request, userId) :
     # 사용자 정보를 가져오는데, .get(id=userId), 
     # 즉 id가 사용자가 입력한 사용자에 대한  정보를 가져온다.
     alluser = PhoneBook.objects.values('id','이름','전화번호',
-                                '주소','이메일','생년월일').get(id=userId)
+                                '주소','이메일','생년월일','작성자').get(id=userId)
     print(alluser)
     context = {"phonebook" : alluser}
     return render(request, "phonebook/detail.html", context)
@@ -58,6 +64,9 @@ def update(request, userId) :
         table.save()
         return redirect("PB:detail", userId)
     else :
-        return render(request, "phonebook/update.html", context)
+        if table.작성자 == request.user.username :
+            return render(request, "phonebook/update.html", context)
+        else : 
+            return redirect("PB:index")
 
 

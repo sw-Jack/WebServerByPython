@@ -29,12 +29,10 @@ index
     : {{i.전화번호}}
 </li>
 {% endfor %}
-
-<button type="button" onclick="location.href='{% url 'PB:add' %}'">추가</button>
-
-
-
-
+{% if user.is_active %}
+    <button type="button" onclick="location.href='{% url 'PB:add' %}'">추가</button>
+{% endif %}
+<button type="button" onclick="location.href='{% url 'mainIndex' %}'">홈</button>       
 
 
 
