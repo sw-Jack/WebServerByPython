@@ -1,9 +1,13 @@
 
-
-로그인 페이지<br>
+{% extends 'test/form.html' %}
+{% block center %}
+<div align="right">
 <form method="POST"> {% csrf_token %}
-    <input type="text" name="username"> <br>
-    <input type="password" name="password"> <br>
-    <input type="submit">
+    <input type="text" name="username" placeholder="id"> <br>
+    <input type="password" name="password" placeholder="password"> <br>
+    <input type="submit" value="로그인">
+    <a href="{% url 'createAccount' %}"> 회원가입 </a>
 </form>
+</div>
+{% endblock %}
 

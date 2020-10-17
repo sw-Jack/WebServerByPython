@@ -1,38 +1,29 @@
-index
-<hr>
-<!--
-<ul>
-    {% for val in phonebook %}
-    <li>
-        {{val}}
-    </li>
-    {% endfor %}
-</ul>
-<hr>
-
-<ul>
-    {% for i in phonebook %}
-    <li>
-        {{i.id}}. {{i.이름}} : {{i.전화번호}}
-    </li>
-    {% endfor %}
-</ul>
--->
 
 
-{%for i in phonebook %}
-<li>
-    {{i.id}} :  
-    <a href="{% url 'PB:detail' i.id %}">{{i.이름}}</a> 
-    <!-- 상대경로 : <a href="http://phonebook/detail/{{i.id}}">{{i.이름}}</a> -->
-    <!-- 절대경로 : <a href="http://127.0.0.1:8000/phonebook/detail/{{i.id}}">{{i.이름}}</a> -->
-    : {{i.전화번호}}
-</li>
-{% endfor %}
-{% if user.is_active %}
-    <button type="button" onclick="location.href='{% url 'PB:add' %}'">추가</button>
-{% endif %}
-<button type="button" onclick="location.href='{% url 'mainIndex' %}'">홈</button>       
+{% extends 'test/form.html' %}
+{% block center %}
+<div align="center">
+    <table border="1" width="500">
+        <tr><th>아이디</th> <th>이 름</th> <th>전화번호</th></tr>
+        {%for i in phonebook %}
+        <tr>
+            <th width="50"> {{ i.id }} </th>
+            <th width="100">
+                <a href="{% url 'PB:detail' i.id %}"> {{ i.이름 }} </a></th>
+            <th width="300"> {{ i.전화번호 }} </th>
+        </tr>
+        {% endfor %}
+    {% if user.is_active %}
+        <tr>
+            <td align="right" colspan="3"><button type="button" 
+                onclick="location.href='{% url 'PB:add' %}'">추가</button>
+        </tr>
+    {% endif %}
+    </table>
+</div>
+{% endblock %}
+
+
 
 
 

@@ -31,8 +31,22 @@ def createAccount(request) :
         )
         return redirect("login")
 
+def userInfo(request, userId) :
+    userInfo = User.objects.get(id=userId)
+    content = {"userInfo" : userInfo}
+    if request.method == "GET" : 
+        return render(request, "registration/userInfo.html", content)
+    else : 
+        user = request.user
+        user.username = request.POST.get('username')
+        user.last_name = request.POST.get('last_name')
+        user.first_name = request.POST.get('first_name')
+        user.email = request.POST.get('email')
+        user.save()
+        return redirect('userInfo', request.user.id)
 
-
+def img(request) :
+    return render(request, "test/img.html")
 
 '''
 로그인한 사용자 : {{user.username}} <br>

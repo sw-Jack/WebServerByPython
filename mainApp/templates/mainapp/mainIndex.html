@@ -1,16 +1,40 @@
 
+{% extends 'test/form.html' %}
+{% block center %}
+<div align="right">
+    {% if user.is_active %}
+        <b>{{user.username}}님 환영합니다!!!</b>
+    {% endif %}
+</div>
+<div align="center">
+    <table>
+        <tr>
+            <td align="center">
+                <h3>내 사전에 불가능이란 없다<br>불가능은 소극적인 자의 환영이며
+                    비겁한 자의 도피처이다.<br>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td align="center"> 
+                <h3>- 나폴레옹</h3>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %} 
+    {% if user.is_active %}
+        {{user.username}}님 환영합니다!!!
+    <button type="button" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+    <!-- <br> <a href="{% url 'logout' %}">logout</a> -->
+    <button type="button" onclick="location.href='{% url 'PB:index' %}'">목록보기</button>
+    {% else %}
+        <a href="{% url 'login' %}">로그인</a>
+        <a href="{% url 'createAccount' %}">회원가입</a>
+    {% endif %}
 
-{% if user.is_active %}
-    {{user.username}}님 환영합니다!!!
-<button type="button" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
-<!-- <br> <a href="{% url 'logout' %}">logout</a> -->
-<button type="button" onclick="location.href='{% url 'PB:index' %}'">목록보기</button>
-{% else %}
-    <a href="{% url 'login' %}">로그인</a>
-    <a href="{% url 'createAccount' %}">회원가입</a>
-{% endif %}
+
 <hr>
-
 로그인한 사용자 : {{user.username}} <br>
 로그인한 사용자 id : {{user.id}} <br>
 로그인 확인 : {{user.is_active}} <br>

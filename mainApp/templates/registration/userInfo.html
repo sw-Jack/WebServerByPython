@@ -1,0 +1,15 @@
+
+{% extends 'test/form.html' %}
+{% block center %}
+<form method="POST"> {% csrf_token %}
+    계정명 : <input type="text" value="{{ userInfo.username }}" name="username"> <br>
+    이름 : <input type="text" value="{{ userInfo.last_name }}" name="last_name"> <br>
+    성 : <input type="text" value="{{ userInfo.first_name }}" name="first_name"> <br>
+    이메일 : <input type="text" value="{{ userInfo.email }}" name="email"> <br>
+    <input type="submit" value="수정">
+</form>
+{% endblock %}
+
+
+
+

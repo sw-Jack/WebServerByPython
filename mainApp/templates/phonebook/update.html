@@ -1,8 +1,7 @@
 
 
-
-update
-<hr>
+{% extends 'test/form.html' %}
+{% block center %}
 {%if user.is_active %}
 <form method="POST"> {% csrf_token %}
     <input type="text" value="{{phonebook.이름}}" name="name"> <br>
@@ -19,3 +18,4 @@ update
         location.href="{% url 'login' %}"
     </script>
 {% endif %}
+{% endblock %}
