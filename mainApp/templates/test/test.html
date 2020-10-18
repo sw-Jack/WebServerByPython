@@ -1,38 +1,37 @@
 
 <!--
-    === insert (추가) ===
-    phone(변수) = PhoneBook()
-    phone.이름 = '홍길동' (request.POST.get('name'))
-    phone.전화번호 ='1234' (request.POST.get('phNum'))
-    ... 
-    phone.save() 데이터베이스 저장
+=== insert (추가) ===
+phone(변수) = PhoneBook()
+phone.이름 = '홍길동' (request.POST.get('name') )
+phone.전화번호 = '1234' (request.POST.get('phNum') )
+......
+phone.save()  데이터베이스 저장
 
-    === update (수정) ===
-    특정 게시글 정보를 수정한다. 그렇기 때문에 특정 게시글 정보(id)가 있어야 한다.
-    phone(변수) = PhoneBook.objects.get(id=1(게시글 번호)) // id가 1인 객체의 모든 번호를 가져온다.
-    phone.이름 = request.POST.get("name")
-    phone.전화번호 = request.POST.get("phNum")
-    ... 
-    phone.save()
+=== update (수정) ===
+특정 게시글의 정보를 수정한다. 그렇기 때문에 특정 게시글 정보(id)가 있어야 한다
+phone(변수) = PhoneBook.objects.get( id = 1(게시글 번호) )
+phone.이름 = request.POST.get("name")
+phone.전화번호 = request.POST.get("phNum")
+...
+phone.save()
 
-    === delete (삭제) ===
-    phone(변수) = PhoneBook.objects.get(id=1(게시글번호))
-    phone.delete
-
+=== delete (삭제) ===
+phone(변수) = PhoneBook.objects.get( id = 1(게시글 번호) )
+phone.delete()
 -->
-test
-<hr>
 
-<h1>get 방식</h1>
+
+
+test....
+<h1>get방식</h1>
 <form method="get">
-    아이디 : <input type="text" name="userId"> <br>
-    비밀번호 : <input type="text" name="userPwd"> <br>
+    아이디 : <input type="text" name="userId"><br>
+    비밀번호 : <input type="text" name="userPwd"><br>
     <input type="submit" value="submit">
 </form>
-
-<h1>post 방식</h1>
-<form method="post">
-    아이디 : <input type="text" name="userId"> <br>
-    비밀번호 : <input type="text" name="userPwd"> <br>
+<h1>post방식</h1>
+<form method="post">{% csrf_token %}
+    아이디 : <input type="text" name="userId"><br>
+    비밀번호 : <input type="text" name="userPwd"><br>
     <input type="submit" value="submit">
 </form>

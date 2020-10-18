@@ -1,0 +1,16 @@
+{% extends 'test/form.html' %}
+{% block center %}
+    <div align="center">
+        <h3>게시글 내용 보기( 작성자 : {{border.작성자}})</h3>
+        <h3>제목 : {{border.제목}}</h3>
+        <h4>수정일 : {{border.수정일}}</h4>
+        <h4>작성일 : {{border.작성일}}</h4>
+        <h5>내용<br>{{border.내용}}</h5>
+        
+        {% if user.username == border.작성자 %}
+        <button type="button" onclick="location.href='{% url 'BD:delete' border.id %}'">삭제</button>
+        <button type="button" onclick="location.href='{% url 'BD:update' border.id %}'">수정</button>
+        {% endif %}
+        <button type="button" onclick="location.href='{% url 'BD:index' %}'">목록</button>
+    </div>
+{% endblock %}

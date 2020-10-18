@@ -1,19 +1,12 @@
-
 <html>
 <head>
-    <!-- CSS 추가 -->
-    <!-- block과 inline 
-        - block : 한 줄을 모두 차지
-        - inline : 글자 크기 만큼의 공간만 차지
-        - padding : 공간 크기 (위 오른쪽 아래 왼쪽 순, 공간/여백 주기) -->
     <style>
         ul { display:inline; }
-        ul li {display:inline; padding:0 10px 0 0;}
+        ul li { display:inline; padding: 0 10px 0 0;}
     </style>
 </head>
 <body>
     <div align="center">
-        <!-- CSS 추가 -->
         <h1 style="color:burlywood; font-size:60px; font-family:Gabriola;">
             Web &nbsp; Developer
         </h1>
@@ -21,8 +14,9 @@
     <div align="right">
         <hr>
         <ul>
-            <li><a href="{% url 'mainIndex' %}">HOME</a>
-            <li><a href="{% url 'PB:index' %}">PHONEBOOK</a>
+            <li><a href="{% url 'mainIndex' %}">HOME</a></li>
+            <li ><a href="{% url 'PB:index' %}">PHONEBOOK</a></li>
+            <li ><a href="{% url 'BD:index' 1 %}">게시판</a></li>
             <li>
                 {% if user.is_active %}
                     <a href="{% url 'logout' %}">LOGOUT</a>
@@ -35,16 +29,14 @@
         <hr>
     </div>
     {% block center %}
+
     
-    {% endblock %} 
+    {% endblock %}
     <div align="center" style="padding-top:100px;">
         <hr>
         <i style="color:pink; font-size:30px; font-family:Gabriola;">
-            Copyright &copy; WebDev. All rights reserved.
+            Copyrignt &copy; Web Developer. All rights reserved.
         </i>
     </div>
 </body>
 </html>
-
-
-

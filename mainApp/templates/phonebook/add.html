@@ -1,18 +1,23 @@
-
 {% extends 'test/form.html' %}
 {% block center %}
-<form method="POST"> {% csrf_token %}
-    <input type="text" placeholder="이름" name="name"> <br>
-    <input type="text" placeholder="전화번호" name="phNum"> <br>
-    <input type="email" placeholder="이메일" name="email"> <br>
-    <input type="text" placeholder="주소" name="addr"> <br>
-    <input type="date" placeholder="생년월일" name="bir"> <br>
-    <input type="submit" value="등록">
-</form>
+
+add
+<hr>
+
+{% if user.is_active %}
+    <form method="post">{% csrf_token %}
+        <input type="text" placeholder="이름" name = "name"><br>
+        <input type="text" placeholder="전화번호" name = "phNum"><br>
+        <input type="email" placeholder="이메일" name = "email"><br>
+        <input type="text" placeholder="주소" name = "addr"><br>
+        <input type="date" name = "bir"><br>
+    
+        <input type="submit" value="등록">
+    </form>
+{% else %}
+    <script> 
+        alert("로그인 먼저 하세요")
+        location.href="{% url 'login' %}" 
+    </script>
+{% endif %}
 {% endblock %}
-
-
-
-
-
-

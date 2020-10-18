@@ -1,17 +1,14 @@
-
 {% extends 'test/form.html' %}
 {% block center %}
 <div align="center">
-<form method="POST"> {% csrf_token %}
-    <input type="text" name="userId" placeholder="input id"> <br>
-    <input type="password" name="userPassword" placeholder="input password"> <br>
-    <input type="text" name="userFirstName" placeholder="input first name"> <br>
-    <input type="text" name="userLastName" placeholder="input last name"> <br>
-    <input type="email" name="userEmail" placeholder="input email"> <br>
+<form method="post">{% csrf_token %}
+    <input type="text" name="userId" placeholder="input id"><br>
+    <input type="password" name="userPassword" placeholder="input password"><br>
+    <input type="text" name="userFirstName" placeholder="input first name"><br>
+    <input type="text" name="userLastName" placeholder="input last name"><br>
+    <input type="email" name="userEmail" placeholder="input email"><br>
     <hr>
     <input type="submit" value="가입">
 </form>
 </div>
 {% endblock %}
-
-

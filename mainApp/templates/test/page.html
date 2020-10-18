@@ -1,0 +1,24 @@
+
+
+{{ pageNum }} 페이지 연습 <br>
+이전 페이지 번호 : {{ pageNum.previous_page_number }} <br>
+현재 페이지 번호 : {{ pageNum.number }} <br>
+다음 페이지 번호 : {{ pageNum.next_page_number }} <br>
+마지막 페이지 번호 : {{ pageNum.paginator.num_pages }} <br>
+
+
+이전 값이 있다면 : {{ pageNum.has_previous }} <br>
+다음 값이 있다면 : {{ pageNum.has_next }} <br>
+<hr>
+
+{% for value in pageNum %}
+    아이디 : {{ value.id }}  <br>
+    제목 : {{ value.제목 }} <br>
+    작성자 : {{ value.작성자 }}  <br>
+    조회수 : {{ value.조회수 }}  <br>
+    <hr>
+{% endfor %}
+
+<button type="button" disabled>이전</button> <!-- disabled 는 비활성화 -->
+<button type="button">다음</button>
+

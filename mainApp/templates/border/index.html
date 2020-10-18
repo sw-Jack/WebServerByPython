@@ -1,10 +1,58 @@
-
-{% extends 'test/form.html'}
+{% extends 'test/form.html' %}
 {% block center %}
-    border index.html 연결 <br>
+<div align = "center">
+    <table border="1">
+        <caption><b>게시글</b></caption>
+        <tr> 
+            <th width="100">번호</th> <th width="200">제목</th> 
+            <th width="100">작성자</th> <th width="100">조회수</th>    
+        </tr>
+        {% for i in userAll %}
+        <tr>
+            <td>{{i.id}}</td> 
+            <td>
+                {% if user.is_active %}
+                <a href="{% url 'BD:detail' i.id %}" style="text-decoration:none;">{{i.제목}}</a>
+                {% else %}
+                <a href="{% url 'login' %}" style="text-decoration:none;">{{i.제목}}</a>
+                {% endif %}
+            </td> 
+            <td>{{i.작성자}}</td> <td>{{i.조회수}}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4" align="right">
+            {% if userAll.has_previous %}
+                <button type="button" onclick="location.href=
+                '{% url 'BD:index' userAll.previous_page_number %}'">이전</button>
+            {% else %}
+                <button type="button" disabled>이전</button>
+            {% endif %}
 
-    {% for i in userAll %}  
-        {{i}} <br>
-    {% endfor %}
+            {% for i in arrPage %}
+                <a href="{% url 'BD:index' i %}">[{{ i }}]</a>
+            {% endfor %}
+
+            {% if userAll.has_next %}
+                <button type="button" onclick="location.href=
+                '{% url 'BD:index' userAll.next_page_number %}'">다음</button>
+            {% else %}
+                <button type="button" disabled>이전</button>
+            {% endif %}
+                {{ userAll.number }} / {{ userAll.paginator.num_pages }}    
+                {% if user.is_active %}
+                <button onclick="location.href='{% url 'BD:add' %}'">글쓰기</button>
+                {% else %}
+                <button onclick="history.back();">글쓰기</button>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
 {% endblock %}
 
+
+    border index.html 연결<br>
+    {% for i in userAll %}
+        {{i}}<br>
+    {% endfor %}

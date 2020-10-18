@@ -1,0 +1,28 @@
+
+
+{% extends 'test/form.html' %}
+{% block center %}
+    <h3 style="text-align:center;">수정 페이지 입니다.</h3>
+    <form method="POST"> {% csrf_token %}
+        <table align="center" border="0">
+            <tr>
+                <th>제목</th>
+                <td>
+                    <input type="text" value="{{ border.제목 }}" name="title">
+                </td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td>
+                    <textarea name="context">{{ border.내용 }}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="submit" value="수정">
+                    <input type="button" value="이전" onclick="history.back();">
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

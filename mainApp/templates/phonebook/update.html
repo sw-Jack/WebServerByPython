@@ -1,20 +1,19 @@
-
-
 {% extends 'test/form.html' %}
 {% block center %}
-{%if user.is_active %}
-<form method="POST"> {% csrf_token %}
-    <input type="text" value="{{phonebook.이름}}" name="name"> <br>
-    <input type="text" value="{{phonebook.전화번호}}" name="phNum"> <br>
-    <input type="email" value="{{phonebook.이메일}}" name="email"> <br>
-    <input type="text" value="{{phonebook.주소}}" name="addr"> <br>
-                                      <!-- 날짜 형식도 지정 : date formatting -->
-    <input type="date" value="{{phonebook.생년월일 | date:'Y-m-d' }}" name="bir"> <br>
-    <input type="submit" value="수정">
-</form>
+update<hr>
+phonebook : {{phonebook}}
+{% if user.is_active %}
+        <form method="post">{% csrf_token %}
+            <input type="text" value="{{phonebook.이름}}" name = "name"><br>
+            <input type="text"  value="{{phonebook.전화번호}}" name = "phNum"><br>
+            <input type="email"  value="{{phonebook.이메일}}" name = "email"><br>
+            <input type="text"  value="{{phonebook.주소}}" name = "addr"><br>
+            <input type="date" value="{{phonebook.생년월일 | date:'Y-m-d' }}" name = "bir"><br>
+            <input type="submit" value="등록">
+        </form>
 {% else %}
     <script>
-        alert("로그인 먼저 진행하세요")
+        alert("로그인 먼저 진행하세요"); 
         location.href="{% url 'login' %}"
     </script>
 {% endif %}

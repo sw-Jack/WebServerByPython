@@ -1,31 +1,61 @@
-
-
 {% extends 'test/form.html' %}
 {% block center %}
 <div align="center">
-    <table border="1" width="500">
-        <tr><th>아이디</th> <th>이 름</th> <th>전화번호</th></tr>
-        {%for i in phonebook %}
-        <tr>
-            <th width="50"> {{ i.id }} </th>
-            <th width="100">
-                <a href="{% url 'PB:detail' i.id %}"> {{ i.이름 }} </a></th>
-            <th width="300"> {{ i.전화번호 }} </th>
-        </tr>
-        {% endfor %}
+<table border='1' width='500'>
+    <tr> <th>아이디</th> <th>이 름</th> <th width="200">전화번호</th> </tr>
+    {% for values in phonebook %}
+    <tr>
+        <td width='100'>{{values.id}}</td>
+        <td width = '300'>
+            <a href="{% url 'PB:detail' values.id %}"> {{ values.이름 }}</a>
+        </td>
+        <td width='100'>{{ values.전화번호}}</td>
+    </tr>
+    {% endfor %}
     {% if user.is_active %}
-        <tr>
-            <td align="right" colspan="3"><button type="button" 
-                onclick="location.href='{% url 'PB:add' %}'">추가</button>
-        </tr>
+    <tr>
+        <td align='right' colspan='3'>
+            <button onclick="location.href='{% url "PB:add" %}'">추가</button>
+        </td>
+    </tr>
     {% endif %}
-    </table>
+</table>
 </div>
 {% endblock %}
 
 
 
+index<br>
+<hr>
+{% for i in phonebook %}
+    {{ i.id }} : 
+    <a href='{% url "PB:detail" i.id %}'>{{i.이름}}</a>
+    <a href="/phonebook/detail/{{ i.id }}/"> {{i.이름}} </a> : 
+    <a href="http://127.0.0.1:8000/phonebook/detail/{{ i.id }}/"> {{i.이름}} </a>
+    {{ i.전화번호 }}<br>
+{% endfor %}
+{% if user.is_active %}
+<button type="button" onclick="location.href='{% url "PB:add" %}'">추가</button>
+{% endif %}
+<button type="button" onclick="location.href='{% url "mainIndex" %}'">HOME</button>
+<hr>
 
 
 
-
+{{phonebook}}<br>
+{{phonebook.0}}<br>
+{{phonebook.1}}<br>
+<hr>
+{% for i in phonebook %}
+    {{i}}<br>
+{% endfor %}
+<hr>
+{% for i in phonebook %}
+    {{ i.id }} : {{i.이름}} : {{ i.전화번호 }}<br>
+{% endfor %}
+<hr>
+{% for i in phonebook %}
+    {% for k, v in i.items %}
+        {{k}} : {{ v }}<br>
+    {% endfor %}
+{% endfor %}

@@ -1,23 +1,28 @@
 {% extends 'test/form.html' %}
 {% block center %}
 <table border="1">
-    <tr> <th>이름</th> <td>{{phonebook.이름}}</td> </tr>
-    <tr> <th>전화번호</th> <td>{{phonebook.전화번호}}</td> </tr>
-    <tr> <th>이메일</th> <td>{{phonebook.이메일}}</td> </tr>
-    <tr> <th>주소</th> <td>{{phonebook.주소}}</td> </tr>
-    <tr> <th>생년월일</th> <td>{{phonebook.생년월일}}</td> </tr>
+    <tr> <th>이름</th><td>{{ phonebook.이름 }}</td> </tr>
+    <tr> <th>전화번호</th><td>{{ phonebook.전화번호 }}</td> </tr>
+    <tr> <th>이메일</th><td>{{ phonebook.이메일 }}</td> </tr>
+    <tr> <th>주소</th><td>{{ phonebook.주소 }}</td> </tr>
+    <tr> <th>생년월일</th><td>{{ phonebook.생년월일 }}</td> </tr>
 </table>
-
-<button type="button" onclick="location.href='{% url 'PB:index' %}'">메인</button>
-<!--{% if user.is_active %}
-    {% if user.username == phonebook.작성자 %}
-        <button type="button" onclick="location.href='{% url 'PB:update' phonebook.id %}'">수정</button>
-        <button type="button" onclick="location.href='{% url 'PB:delete' phonebook.id %}'">삭제</button>
-    {% endif %}
-{% endif %} -->
+<button type="button" onclick="location.href='{% url 'PB:index' %}'">index이동</button>
 {% if user.username == phonebook.작성자 %}
-    <button type="button" onclick="location.href='{% url 'PB:update' phonebook.id %}'">수정</button>
-    <button type="button" onclick="location.href='{% url 'PB:delete' phonebook.id %}'">삭제</button>
+<button type="button" onclick="location.href='{% url 'PB:update' phonebook.id %}'">수정</button>
+<button type="button" onclick="location.href='{% url 'PB:delete' phonebook.id %}'">삭제</button>
 {% endif %}
 {% endblock %}
 
+
+<hr>
+detail<br>
+<ul>
+    <li>이름 : {{phonebook.이름}}</li>
+    <li>전화번호 : {{phonebook.전화번호}}</li>
+    <li>이메일 : {{phonebook.이메일}}</li>
+    <li>주소 : {{phonebook.주소}}</li>
+    <li>생년월일 : {{phonebook.생년월일}}</li>
+</ul>
+<a href="{% url 'PB:index' %}">index이동</a>
+<button type="button" onclick="location.href='{% url 'PB:index' %}'">index이동</button>

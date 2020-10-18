@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'v%x(q@0+y+xo#2@6+k&q@s++-7sbzr_t$paz-e170(bxe1x2#*'
+SECRET_KEY = '@e(!p4y43rvh^s%_pufv-q$#hgrqoj-7ta_j^l##k6f8o32zdk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainApp', 'phonebook', 'border',
+    'mainApp','phonebook','border',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mainApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        'DIRS': [os.path.join(BASE_DIR,"templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
+#LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'UTC'
@@ -119,8 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [ os.path.join(BASE_DIR,'static') ]
+
 
 LOGIN_URL = "/account/login/"
 LOGOUT_URL = "/account/logout/"
-LOGIN_REDIRECT_URL = "/" # 로그인 성공 시 접속되는 경로
+LOGIN_REDIRECT_URL = "/"
